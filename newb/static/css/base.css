@@ -3,6 +3,31 @@ html, body {
 }
 
 body {
-    background-color: #333333;
+    background-color: #00101a;
     color: white;
+    z-index: 0;
+    position: relative;
+}
+
+.page {
+    z-index: 1;
+    position: relative;
+    margin-bottom: 200px;
+}
+
+footer {
+    height: 200px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #303944;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+footer .footer-inner .footer-header {
+    font-size: 2.5em;
+    margin-bottom: 10px;
 }

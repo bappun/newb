@@ -1,2 +1,4 @@
 Django==1.11.5
+django-classy-tags==0.8.0
+django-sekizai==0.10.0
 pytz==2017.2

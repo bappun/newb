@@ -1,0 +1,40 @@
+{% load sekizai_tags static %}
+<!doctype html>
+<html>
+    <head>
+        <link rel="icon" type="image/png" href="{% static 'img/favicon-32x32.png' %}" />
+        <title>{% block title %}{% endblock title %}</title>
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+        {% render_block 'css' %}
+    </head>
+    <body>
+        <header>
+            <nav class="navbar fixed-top navbar-dark bg-faded">
+              <a class="navbar-brand" href="/">Newb</a>
+            </nav>
+        </header>
+
+        <div id="page">
+            {% block page %}{% endblock page %}
+        </div>
+
+        <footer></footer>
+
+        <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+        <script type="text/javascript">
+            $.expr[':'].external = function(obj){
+                return !obj.href.match(/^mailto\:/)
+                       && (obj.hostname != location.hostname)
+                       && !obj.href.match(/^javascript\:/)
+                       && !obj.href.match(/^$/)
+            };
+            $('a:external').attr('target', '_blank');
+        </script>
+        {% render_block 'js' %}
+    </body>
+</html>

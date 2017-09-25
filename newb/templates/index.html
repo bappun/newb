@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load sekizai_tags static %}
+
+{% block page %}
+    {% addtoblock 'css' %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    {% endaddtoblock %}
+
+    <div class="bg"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                Hoc inmaturo interitu ipse quoque sui pertaesus excessit e vita aetatis nono anno atque vicensimo cum quadriennio imperasset. natus apud Tuscos in Massa Veternensi, patre Constantio Constantini fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos trabeae consulares nobilitarunt et praefecturae.
+            </div>
+        </div>
+    </div>
+{% endblock %}

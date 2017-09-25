@@ -11,13 +11,13 @@ Date de rendu : 8 décembre à 23h59 sinon le 22 décembre
 
 ## Thème du site
 
-Newb est un site de ?.
+Newb est un site qui vend des jeux vidéo.
 
 ## Requirements
 
 IDE : PyCharm <br/>
 Framework : Django <br/>
-Database : MySQL
+Database : SQLite
 
 ## TODO List
 

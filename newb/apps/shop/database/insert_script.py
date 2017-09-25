@@ -1,3 +1,5 @@
+from newb.apps.shop.models import Platform
+
 platforms = [
     ['Windows', 'Microsoft', None],
     ['Xbox One', 'Microsft', 2013],

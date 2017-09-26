@@ -1,0 +1,34 @@
+@import "../var";
+
+.products-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: -20px;
+
+  .product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 25%;
+    padding: 20px;
+    margin: 20px;
+    border: 3px solid rgba($product-bg-color, 0.2);
+    border-radius: 2px;
+    transition: all ease 400ms;
+    color: inherit;
+
+    &:hover {
+      background-color: $product-bg-color;
+      text-decoration: none;
+    }
+
+    .product-picture {
+      margin-bottom: 20px;
+    }
+
+    .product-title {
+      margin-bottom: 10px;
+    }
+  }
+}

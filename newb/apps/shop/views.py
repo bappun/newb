@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from .models import VideoGame
+
 
 def index(request):
     context = {}
@@ -7,5 +9,7 @@ def index(request):
 
 
 def products(request):
-    context = {}
+    context = {
+        'products': VideoGame.objects.all()
+    }
     return render(request, 'shop/products.html', context)

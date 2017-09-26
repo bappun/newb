@@ -9,7 +9,7 @@ html, body {
 }
 
 body {
-  background-color: $background-color;
+  background-color: $bg-color;
   color: white;
   z-index: 0;
   position: relative;
@@ -20,7 +20,7 @@ body {
 header {
 
   nav {
-    background-color: $nav-color;
+    background-color: $nav-bg-color;
     height: $nav-height;
 
     .navbar-brand {
@@ -35,8 +35,8 @@ header {
   z-index: 1;
   position: relative;
   margin-bottom: $footer-height;
-  height: 100vh;
-  background-color: $background-color;
+  min-height: 100vh;
+  background-color: $bg-color;
 }
 
 footer {
@@ -45,7 +45,7 @@ footer {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #303944;
+  background-color: $footer-bg-color;
   text-align: center;
   display: flex;
   align-items: center;

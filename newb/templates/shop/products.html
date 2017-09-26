@@ -1,2 +1,43 @@
 {% extends 'base.html' %}
 {% load sekizai_tags static sass_tags %}
+
+{% block page %}
+    {% addtoblock 'css' %}
+        <link rel="stylesheet" type="text/css" href="{% sass_src 'css/shop/products.scss' %}">
+    {% endaddtoblock %}
+
+    <div class="products-list">
+        {% for product in products %}
+            <a href="#" class="product" data-toggle="modal" data-target="#modal-{{ product.id }}">
+                <div class="product-picture"><img height="200px" src="{{ product.picture }}" /></div>
+                <div class="product-title">{{ product.title }}</div>
+                <div class="product-price">{{ product.price }}€</div>
+            </a>
+            <div class="modal fade" id="modal-{{ product.id }}" tabindex="-1" role="dialog" aria-labelledby="modal-{{ product.id }}-label" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal-{{ product.id }}-label">{{ product.title }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            {{ product.release_date }}
+                            {{ product.genre }}
+                            {{ product.platform }}
+                            {{ product.editor }}
+                            {{ product.developer }}
+                            {{ product.description }}
+                            {{ product.price }}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                            <button type="button" class="btn btn-primary">Acheter</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

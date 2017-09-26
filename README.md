@@ -25,8 +25,8 @@ Database : SQLite
 - [ ] n-tiers architecture (presentation + logic + data)
 - [ ] a backend MVC pattern (no single page app)
 - [ ] CRUD operations (Create, Read, Update, Delete)
-- [ ] database with at least two tables and a many-to-one relationship
-- [ ] ORM to access the database
+- [x] database with at least two tables and a many-to-one relationship
+- [x] ORM to access the database
 - [ ] create UI/UX with CSS
 - [ ] at least one javascript function / one css file of your own
 - [ ] deployment

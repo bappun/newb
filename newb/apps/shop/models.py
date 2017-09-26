@@ -21,7 +21,7 @@ class Developer(models.Model):
 
 class VideoGame(models.Model):
     title = models.CharField(max_length=200, verbose_name='Titre')
-    release_date = models.DateTimeField(verbose_name='Date de sortie')
+    release_date = models.DateTimeField(null=True, verbose_name='Date de sortie')
     genre = models.ForeignKey('Genre', verbose_name='Genre')
     platform = models.ForeignKey('Platform', verbose_name='Plateforme')
     editor = models.ForeignKey('Editor', verbose_name='Éditeur')

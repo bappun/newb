@@ -32,7 +32,7 @@ class VideoGame(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2, verbose_name='Prix')
 
 
-# on rajoute des informations au modèle user déjà existant par défaut sur django
+# we add some informations at the user model which already exist on django
 class Customer(models.Model):
     user = models.OneToOneField(User)
     address = models.CharField(max_length=150, verbose_name='Adresse')

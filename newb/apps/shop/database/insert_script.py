@@ -1,8 +1,4 @@
-from newb.apps.shop.models import Platform
-from newb.apps.shop.models import Genre
-from newb.apps.shop.models import Editor
-from newb.apps.shop.models import Developer
-from newb.apps.shop.models import VideoGame
+from newb.apps.shop.models import Platform, Genre, Editor, Developer, VideoGame
 
 
 platforms = [

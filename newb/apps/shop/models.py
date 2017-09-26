@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Genre(models.Model):
@@ -29,3 +30,13 @@ class VideoGame(models.Model):
     picture = models.CharField(max_length=700, verbose_name='Jaquette')
     description = models.TextField(null=True, verbose_name='Description')
     price = models.DecimalField(max_digits=5, decimal_places=2, verbose_name='Prix')
+
+
+# on rajoute des informations au modèle user déjà existant par défaut sur django
+class Customer(models.Model):
+    user = models.OneToOneField(User)
+    address = models.CharField(max_length=150, verbose_name='Adresse')
+    postal_code = models.IntegerField(max_digits=5, verbose_name='Code postal')
+    city = models.CharField(max_length=100, verbose_name='Ville')
+    country = models.CharField(max_length=75, verbose_name='Pays')
+    phone = models.IntegerField(max_digits=10, verbose_name='Numéro de téléphone')

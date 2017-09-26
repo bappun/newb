@@ -27,7 +27,7 @@ class VideoGame(models.Model):
     platform = models.ForeignKey('Platform', verbose_name='Plateforme')
     editor = models.ForeignKey('Editor', verbose_name='Éditeur')
     developer = models.ForeignKey('Developer', verbose_name='Développeur')
-    picture = models.CharField(max_length=700, verbose_name='Jaquette')
+    picture = models.ImageField(upload_to="static/img/shop", null=True, blank=True, verbose_name='Jaquette')
     description = models.TextField(null=True, verbose_name='Description')
     price = models.DecimalField(max_digits=5, decimal_places=2, verbose_name='Prix')
 

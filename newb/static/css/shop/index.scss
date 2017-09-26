@@ -1,0 +1,21 @@
+@import "../var";
+
+header {
+
+  nav {
+    background-color: transparent;
+
+    &.scrolled {
+      background-color: $nav-color;
+    }
+
+    &.animate {
+      transition: all ease 400ms;
+    }
+  }
+}
+
+.page {
+  background: url('/static/img/shop/background.jpg') no-repeat top;
+  background-size: cover;
+}

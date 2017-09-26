@@ -1,0 +1,70 @@
+@import "var";
+
+.brand {
+  font-family: 'PatrickHandSC', sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: $background-color;
+  color: white;
+  z-index: 0;
+  position: relative;
+  font-family: 'Lato', sans-serif;
+}
+
+
+header {
+
+  nav {
+    background-color: $nav-color;
+    height: $nav-height;
+
+    .navbar-brand {
+      font-size: 2em;
+    }
+  }
+}
+
+.page {
+  padding-top: $nav-height + 40px;
+  padding-bottom: 40px;
+  z-index: 1;
+  position: relative;
+  margin-bottom: $footer-height;
+  height: 100vh;
+  background-color: $background-color;
+}
+
+footer {
+  height: $footer-height;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #303944;
+  text-align: center;
+  display: flex;
+  align-items: center;
+
+  .footer-inner {
+
+    .footer-header {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .footer-name,
+    .footer-date {
+      font-size: 0.8em;
+      opacity: 0.5;
+    }
+
+    .footer-name {
+      margin-bottom: 10px;
+    }
+  }
+}

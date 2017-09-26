@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'PatrickHand';
+  src: url('/static/font/patrick_hand/PatrickHand-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'PatrickHandSC';
+  src: url('/static/font/patrick_hand_sc/PatrickHandSC-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('/static/font/lato/Lato-Regular.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('/static/font/lato/Lato-Bol.ttf');
+  font-weight: 700;
+}
+
+$nav-color: #00101a;
+$nav-height: 74px;
+$footer-height: 200px;
+
+$background-color: #00101a;

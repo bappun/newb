@@ -1,10 +1,39 @@
 {% extends 'base.html' %}
-{% load sekizai_tags static %}
+{% load sekizai_tags static sass_tags %}
 
 {% block page %}
     {% addtoblock 'css' %}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/shop/index.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% sass_src 'css/shop/index.scss' %}">
     {% endaddtoblock %}
 
-    <div class="bg"></div>
+    <div>
+        La prise en charge des polices SVG a été abandonnée au profit des glyphes SVG contenus dans les paquets de police OpenType.
+    </div>
+
+    {% addtoblock "js" %}
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var scroll = 0;
+                var header = $('header > nav');
+                var headerHeight = header.height();
+
+                function menuBehavior() {
+                    scroll = $(this).scrollTop();
+                    if (scroll > headerHeight) {
+                        header.addClass('scrolled');
+                    } else {
+                        header.removeClass('scrolled');
+                    }
+                }
+
+                menuBehavior();
+                $(document).scroll(function () {
+                    menuBehavior();
+                });
+                header.addClass('visible');
+                header.show();
+                header.addClass('animate');
+            });
+        </script>
+    {% endaddtoblock %}
 {% endblock %}

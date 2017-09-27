@@ -4,13 +4,10 @@ header {
 
   nav {
     background-color: transparent;
+    transition: background ease 400ms;
 
     &.scrolled {
       background-color: $nav-bg-color;
-    }
-
-    &.animate {
-      transition: all ease 400ms;
     }
   }
 }
@@ -18,4 +15,17 @@ header {
 .page {
   background: url('/static/img/shop/background.jpg') no-repeat top;
   background-size: cover;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .home-text {
+    text-align: center;
+
+    div {
+      font-size: 3em;
+      margin-bottom: 1em;
+    }
+  }
 }

@@ -16,18 +16,25 @@
 
 @font-face {
   font-family: 'Lato';
-  src: url('/static/font/lato/Lato-Bol.ttf');
+  src: url('/static/font/lato/Lato-Bold.ttf');
   font-weight: 700;
 }
 
-$accent-color: #5e9b9e;
 
-$nav-bg-color: #303944;
-$nav-height: 74px;
+$primary-color-dark: #00101a;
+$primary-color: #303944;
+//$accent-color-dark: #5e9b9e;
+//$accent-color: #e1fcf8;
+$accent-color-dark: #138496;
+$accent-color: #17a2b8;
+$grey-normal: #dddddd;
+$grey-light: #fafafa;
 
-$footer-bg-color: #303944;
+$bg-color: $grey-light;
+$nav-bg-color: rgba($primary-color-dark, 0.9);
+$footer-bg-color: $primary-color;
+$product-bg-color: white;
+$product-shadow-color: $grey-normal;
+
+$nav-height: 5em;
 $footer-height: 200px;
-
-$bg-color: #00101a;
-
-$product-bg-color: $accent-color;

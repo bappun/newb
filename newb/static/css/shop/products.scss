@@ -1,34 +1,49 @@
 @import "../var";
 
 .products-list {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: -20px;
+  padding: 0;
+  margin: 0;
 
-  .product {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1 1 25%;
-    padding: 20px;
-    margin: 20px;
-    border: 3px solid rgba($product-bg-color, 0.2);
-    border-radius: 2px;
-    transition: all ease 400ms;
-    color: inherit;
+  .list-item {
+    list-style: none;
+    padding: 15px;
 
-    &:hover {
+    .product {
+      padding: 20px;
       background-color: $product-bg-color;
-      text-decoration: none;
+      transition: transform ease-in-out 200ms;
+      box-shadow: 1px 1px 8px 1px $product-shadow-color;
+
+      .product-picture {
+        margin-bottom: 20px;
+      }
+
+      .product-title {
+        margin-bottom: 20px;
+        font-size: 1.5em;
+        height: 3em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .product-price {
+        font-weight: bold;
+        color: $accent-color-dark;
+        border-top: 1px solid $grey-normal;
+        padding-top: 20px;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+        z-index: 10;
+      }
     }
 
-    .product-picture {
-      margin-bottom: 20px;
-    }
-
-    .product-title {
-      margin-bottom: 10px;
+    .product-details {
+      div + div {
+        padding-top: 1em;
+      }
     }
   }
 }

@@ -3,7 +3,7 @@
 <html>
     <head>
         <link rel="icon" type="image/png" href="{% static 'img/favicon-32x32.png' %}" />
-        <title>{% block title %}{% endblock title %}</title>
+        <title>{% block title %}{% endblock title %} - Newb</title>
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,9 +12,10 @@
         <link rel="stylesheet" type="text/css" href="{% sass_src 'css/base.scss' %}">
         {% render_block 'css' %}
     </head>
-    <body>
+    <body class="loading">
+        <div class="load-container"><div class="loader"></div></div>
         <header>
-            <nav class="navbar fixed-top navbar-dark bg-faded navbar-expand-md">
+            {% comment %}<nav class="navbar fixed-top navbar-dark bg-faded navbar-expand-md">
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -26,6 +27,14 @@
                         </li>
                     </ul>
                 </div>
+            </nav>{% endcomment %}
+            <nav class="navbar fixed-top navbar-dark bg-faded">
+                <a class="navbar-brand brand" href="/">Newb</a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'shop:products' %}">Produits</a>
+                    </li>
+                </ul>
             </nav>
         </header>
 
@@ -43,10 +52,19 @@
             </div>
         </footer>
 
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
         <script type="text/javascript">
+            // loading screen
+            $(window).on('load', function () {
+                $('.load-container').fadeOut(500, function () {
+                    $('body').removeClass('loading');
+                    $('.load-container').remove();
+                });
+            });
+
+            // add _blank on external links
             $.expr[':'].external = function(obj){
                 return !obj.href.match(/^mailto\:/)
                        && (obj.hostname != location.hostname)
@@ -54,6 +72,33 @@
                        && !obj.href.match(/^$/)
             };
             $('a:external').attr('target', '_blank');
+
+            // footer fix when modal opened
+            scrollbarWidth = function () {
+                var parent, child, width;
+
+                if (width === undefined) {
+                    parent = $('<div style="width:50px;height:50px;overflow:auto"><div/></div>').appendTo('body');
+                    child = parent.children();
+                    width = child.innerWidth() - child.height(99).innerWidth();
+                    parent.remove();
+                }
+
+                return width;
+            };
+
+            var $modal = $('.modal');
+            var $page = $('.page');
+            var $footer = $('footer');
+            $modal.on('show.bs.modal', function () {
+                var padding = scrollbarWidth();
+                $page.css('padding-right', padding);
+                $footer.css('padding-right', padding);
+            });
+            $modal.on('hidden.bs.modal', function () {
+                $page.css('padding-right', 0);
+                $footer.css('padding-right', 0);
+            })
         </script>
         {% render_block 'js' %}
     </body>

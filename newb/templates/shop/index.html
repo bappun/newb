@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 {% load sekizai_tags static sass_tags %}
 
+{% block title %}Accueil{% endblock %}
 {% block page %}
     {% addtoblock 'css' %}
         <link rel="stylesheet" type="text/css" href="{% sass_src 'css/shop/index.scss' %}">
     {% endaddtoblock %}
 
-    <div>
-        La prise en charge des polices SVG a été abandonnée au profit des glyphes SVG contenus dans les paquets de police OpenType.
+    <div class="home-text">
+        <div>Les meilleurs jeux, au meilleur prix, c'est ici.</div>
+        <button type="button" class="btn btn-info btn-lg" onclick="window.location.href='/products'">Parcourir la boutique</button>
     </div>
 
     {% addtoblock "js" %}
@@ -32,7 +34,6 @@
                 });
                 header.addClass('visible');
                 header.show();
-                header.addClass('animate');
             });
         </script>
     {% endaddtoblock %}

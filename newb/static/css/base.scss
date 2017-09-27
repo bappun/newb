@@ -1,7 +1,91 @@
 @import "var";
 
+.load-container {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 1100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+.loader,
+.loader:after {
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+}
+
+.loader {
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-left: 1.1em solid #ffffff;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear;
+}
+
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+button {
+  cursor: pointer;
+}
+
 .brand {
   font-family: 'PatrickHandSC', sans-serif;
+}
+
+.not-really-a-button {
+  background: none;
+  border: none;
+  padding: 0;
+  display: block;
+  width: 100%;
+}
+
+
+.modal {
+
+  .modal-header {
+    color: white;
+    background-color: $accent-color-dark;
+
+    .close {
+      color: white;
+      text-shadow: none;
+    }
+  }
+  .modal-content {
+    border-radius: 0;
+  }
 }
 
 html, body {
@@ -9,31 +93,41 @@ html, body {
 }
 
 body {
+  font-size: 1.1em;
   background-color: $bg-color;
-  color: white;
-  z-index: 0;
-  position: relative;
   font-family: 'Lato', sans-serif;
+
+  &.modal-open {
+    padding-right: 0 !important;
+  }
+
+  &.loading {
+    background-color: black;
+  }
 }
 
-
 header {
+  color: white;
 
   nav {
     background-color: $nav-bg-color;
     height: $nav-height;
+    line-height: $nav-height;
 
     .navbar-brand {
-      font-size: 2em;
+      font-size: 2.5em;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-link {
+      padding: 0;
     }
   }
 }
 
 .page {
-  padding-top: $nav-height + 40px;
-  padding-bottom: 40px;
-  z-index: 1;
-  position: relative;
+  padding-top: $nav-height + 2em;
+  padding-bottom: 2em;
   margin-bottom: $footer-height;
   min-height: 100vh;
   background-color: $bg-color;
@@ -49,17 +143,18 @@ footer {
   text-align: center;
   display: flex;
   align-items: center;
+  color: white;
+  z-index: -1;
 
   .footer-inner {
 
     .footer-header {
-      font-size: 2.5em;
-      margin-bottom: 10px;
+      font-size: 3em;
+      margin-bottom: 0.5em;
     }
 
     .footer-name,
     .footer-date {
-      font-size: 0.8em;
       opacity: 0.5;
     }
 

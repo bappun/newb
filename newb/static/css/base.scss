@@ -55,6 +55,28 @@
   }
 }
 
+@font-face {
+  font-family: 'PatrickHand';
+  src: url('/static/font/patrick_hand/PatrickHand-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'PatrickHandSC';
+  src: url('/static/font/patrick_hand_sc/PatrickHandSC-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('/static/font/lato/Lato-Regular.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('/static/font/lato/Lato-Bold.ttf');
+  font-weight: 700;
+}
+
 button {
   cursor: pointer;
 }
@@ -93,8 +115,16 @@ html, body {
 }
 
 body {
-  font-size: 1.1em;
-  background-color: $bg-color;
+  font-size: 0.8em;
+  @media #{$media-sm} {
+    font-size: 0.9em;
+  }
+  @media #{$media-md} {
+    font-size: 1em;
+  }
+  @media #{$media-lg} {
+    font-size: 1.1em;
+  }
   font-family: 'Lato', sans-serif;
 
   &.modal-open {
@@ -121,6 +151,7 @@ header {
     }
     .nav-link {
       padding: 0;
+      font-size: 1.2em;
     }
   }
 }
@@ -150,7 +181,8 @@ footer {
 
     .footer-header {
       font-size: 3em;
-      margin-bottom: 0.5em;
+      margin-bottom: 0.3em;
+      line-height: 1em;
     }
 
     .footer-name,
@@ -159,7 +191,7 @@ footer {
     }
 
     .footer-name {
-      margin-bottom: 10px;
+      margin-bottom: 0.3em;
     }
   }
 }

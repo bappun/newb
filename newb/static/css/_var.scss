@@ -1,25 +1,8 @@
-@font-face {
-  font-family: 'PatrickHand';
-  src: url('/static/font/patrick_hand/PatrickHand-Regular.ttf');
-}
-
-@font-face {
-  font-family: 'PatrickHandSC';
-  src: url('/static/font/patrick_hand_sc/PatrickHandSC-Regular.ttf');
-}
-
-@font-face {
-  font-family: 'Lato';
-  src: url('/static/font/lato/Lato-Regular.ttf');
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: 'Lato';
-  src: url('/static/font/lato/Lato-Bold.ttf');
-  font-weight: 700;
-}
-
+$media-xs: "only screen and (max-width: 575px)";
+$media-sm: "only screen and (min-width: 576px)";
+$media-md: "only screen and (min-width: 768px)";
+$media-lg: "only screen and (min-width: 992px)";
+$media-xl: "only screen and (min-width: 1200px)";
 
 $primary-color-dark: #00101a;
 $primary-color: #303944;

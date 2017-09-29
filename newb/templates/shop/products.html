@@ -26,8 +26,16 @@
                             </div>
                             <div class="modal-body product-details">
                                 <div><b>Date de sortie : </b>{{ product.release_date }}</div>
-                                <div><b>Genre(s) : </b>{{ product.genres }}</div>
-                                <div><b>Plateforme(s) : </b>{{ product.platforms }}</div>
+                                <div><b>Genre(s) : </b>
+                                    {% for genre in product.genres.all %}
+                                        {{ genre }}{% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <div><b>Plateforme(s) : </b>
+                                    {% for platform in product.platforms.all %}
+                                        {{ platform }}{% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                                </div>
                                 <div><b>Éditeur : </b>{{ product.editor }}</div>
                                 <div><b>Développeur : </b>{{ product.developer }}</div>
                                 <div><b>Description : </b><br/>{{ product.description }}</div>

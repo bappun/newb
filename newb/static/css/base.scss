@@ -115,7 +115,7 @@ html, body {
 }
 
 body {
-  font-size: 0.8em;
+  font-size: 0.9em;
   @media #{$media-sm} {
     font-size: 0.9em;
   }
@@ -141,17 +141,34 @@ header {
 
   nav {
     background-color: $nav-bg-color;
-    height: $nav-height;
+    min-height: $nav-height;
     line-height: $nav-height;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 
+    &.show {
+      background-color: $nav-bg-color;
+    }
+
+    &.navbar {
+      flex-direction: row-reverse;
+      @media #{$media-md} {
+        flex-direction: inherit;
+      }
+    }
+    .navbar-toggler {
+      border: none;
+      border-radius: 0;
+    }
     .navbar-brand {
       font-size: 2.5em;
-      margin: 0;
+      margin: 0 1em 0 0;
       padding: 0;
     }
     .nav-link {
       padding: 0;
       font-size: 1.2em;
+      text-align: center;
     }
   }
 }

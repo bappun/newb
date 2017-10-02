@@ -16,6 +16,15 @@
 
       .product-picture {
         margin-bottom: 20px;
+        height: 200px;
+        line-height: 200px;
+
+        .picture-placeholder {
+          display: block;
+          font-size: 5em;
+          color: $grey-normal;
+          border: 1px solid $grey-normal;
+        }
       }
 
       .product-title {
@@ -41,8 +50,21 @@
     }
 
     .product-details {
-      div + div {
-        padding-top: 1em;
+      text-align: justify;
+
+      table {
+
+        margin-bottom: 0;
+
+        b {
+          padding-bottom: 0.75rem;
+          display: block;
+        }
+
+        tr:first-child th,
+        tr:first-child td {
+          border-top: none;
+        }
       }
     }
   }

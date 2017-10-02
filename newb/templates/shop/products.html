@@ -11,7 +11,7 @@
         {% for product in products %}
             <li class="list-item col-lg-3 col-md-4 col-sm-6 col-12">
                 <button type="button" class="not-really-a-button product" data-toggle="modal" data-target="#modal-{{ product.id }}">
-                    <div class="product-picture"><img height="200px" src="{{ product.picture }}" /></div>
+                    <div class="product-picture">{% if product.picture %}<img height="200px" src="{{ product.picture }}" />{% else %}<span class="picture-placeholder">?</span>{% endif %}</div>
                     <div class="product-title"><span>{{ product.title }}</span></div>
                     <div class="product-price"><span>{{ product.price }}€</span></div>
                 </button>
@@ -25,20 +25,33 @@
                                 </button>
                             </div>
                             <div class="modal-body product-details">
-                                <div><b>Date de sortie : </b>{{ product.release_date }}</div>
-                                <div><b>Genre(s) : </b>
-                                    {% for genre in product.genres.all %}
-                                        {{ genre }}{% if not forloop.last %}, {% endif %}
-                                    {% endfor %}
-                                </div>
-                                <div><b>Plateforme(s) : </b>
-                                    {% for platform in product.platforms.all %}
-                                        {{ platform }}{% if not forloop.last %}, {% endif %}
-                                    {% endfor %}
-                                </div>
-                                <div><b>Éditeur : </b>{{ product.editor }}</div>
-                                <div><b>Développeur : </b>{{ product.developer }}</div>
-                                <div><b>Description : </b><br/>{{ product.description }}</div>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th>Date de sortie</th>
+                                            <td>{% if product.release_date %}{{ product.release_date }}{% else %}À déterminer{% endif %}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Genre{% if product.genres.all|length > 1 %}s{% endif %}</th>
+                                            <td>{% for genre in product.genres.all %}{{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Plateforme{% if product.platforms.all|length > 1 %}s{% endif %}</th>
+                                            <td>{% for platform in product.platforms.all %}{{ platform }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Éditeur</th>
+                                            <td>{% if product.editor %}{{ product.editor }}{% else %}Non précisé{% endif %}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Développeur</th>
+                                            <td>{{ product.developer }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><b>Description</b>{{ product.description }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-info">Acheter - {{ product.price }}€</button>

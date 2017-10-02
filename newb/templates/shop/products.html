@@ -13,7 +13,7 @@
                 <button type="button" class="not-really-a-button product" data-toggle="modal" data-target="#modal-{{ product.id }}">
                     <div class="product-picture">{% if product.picture %}<img height="200px" src="{{ product.picture }}" />{% else %}<span class="picture-placeholder">?</span>{% endif %}</div>
                     <div class="product-title"><span>{{ product.title }}</span></div>
-                    <div class="product-price"><span>{{ product.price }}€</span></div>
+                    <div class="product-price"><span>{{ product.price }} €</span></div>
                 </button>
                 <div class="modal fade" id="modal-{{ product.id }}" tabindex="-1" role="dialog" aria-labelledby="modal-{{ product.id }}-label" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -54,7 +54,7 @@
                                 </table>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-info">Acheter - {{ product.price }}€</button>
+                                <button type="button" class="btn btn-info">Acheter - {{ product.price }} €</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                             </div>
                         </div>

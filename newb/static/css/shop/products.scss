@@ -29,8 +29,8 @@
 
       .product-title {
         margin-bottom: 20px;
-        font-size: 1.5em;
-        height: 3em;
+        font-size: 1.3em;
+        height: 2.6em;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -53,19 +53,37 @@
 
     .product-details {
       text-align: justify;
+      overflow: hidden;
+      padding: 0;
 
-      table {
+      .product-picture-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+      }
 
-        margin-bottom: 0;
+      .product-table-container {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.95);
+        position: inherit;
 
-        b {
-          padding-bottom: 0.75rem;
-          display: block;
-        }
+        table {
+          margin-bottom: 0;
 
-        tr:first-child th,
-        tr:first-child td {
-          border-top: none;
+          b {
+            padding-bottom: 0.75rem;
+            display: block;
+          }
+
+          tr:first-child th,
+          tr:first-child td {
+            border-top: none;
+          }
         }
       }
     }

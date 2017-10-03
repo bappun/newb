@@ -115,13 +115,13 @@ html, body {
 }
 
 body {
-  font-size: 0.9em;
+/*  font-size: 0.9em;
   @media #{$media-sm} {
     font-size: 0.9em;
   }
   @media #{$media-md} {
     font-size: 1em;
-  }
+  }*/
   @media #{$media-lg} {
     font-size: 1.1em;
   }
@@ -165,10 +165,33 @@ header {
       margin: 0 1em 0 0;
       padding: 0;
     }
+    .navbar-nav {
+      width: 100%;
+    }
     .nav-link {
       padding: 0;
-      font-size: 1.2em;
-      text-align: center;
+      font-size: 1.25em;
+
+      &.logout {
+        padding: 0 .75rem;
+      }
+
+      i + span {
+        margin-left: 3px;
+      }
+    }
+
+    .nav-item.right-menu {
+      display: flex;
+
+      @media #{$media-md} {
+        margin-left: auto;
+        order: 10;
+      }
+
+      & > a:first-child {
+        flex: 1;
+      }
     }
   }
 }

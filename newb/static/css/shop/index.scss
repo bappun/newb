@@ -9,6 +9,12 @@ header {
     &.scrolled {
       background-color: $nav-bg-color;
     }
+
+    &.show {
+      @media #{$media-md} {
+        background-color: inherit;
+      }
+    }
   }
 }
 

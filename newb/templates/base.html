@@ -27,7 +27,7 @@
                         {% if user.is_authenticated %}
                             <li class="nav-item right-menu{% if url_name == 'account' %} active{% endif %}">
                                 <a class="nav-link my-account" href="{% url 'shop:account' %}"><i class="icon-user"></i><span>Mon compte</span></a>
-                                <a class="nav-link logout" href="{% url 'shop:logout' %}"><i class="icon-off"></i></a>
+                                <a class="nav-link logout" href="{% url 'shop:signout' %}"><i class="icon-off"></i></a>
                             </li>
                         {% else %}
                             <li class="nav-item right-menu{% if url_name == 'login' %} active{% endif %}">

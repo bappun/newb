@@ -61,7 +61,9 @@ if __name__ == '__main__':
         ['PlayerUnknown\'s Battlegrounds', '2017-03-23', [Genre.objects.get(name='MMO'), Genre.objects.get(name='Action'), Genre.objects.get(name='Aventure'), Genre.objects.get(name='Tir')], [Platform.objects.get(name='Windows')], Editor.objects.get(name='Bluehole, Inc.'), Developer.objects.get(name='Bluehole, Inc.'), '/media/uploaded/img/shop/playerunknowns_battlegrounds.png', 'PlayerUnknown\'s Battlegrounds est un jeu multijoueur de type Battle Royale. En partant de rien, il vous faut trouver des armes et des ressources afin d\'être le dernier survivant. Développé avec Unreal Engine 4, vous vous retrouvez sur une île de 8x8 km, avec pour but ultime de ne pas vous faire tuer.', 23.99]
     ]
 
-    i=1
+    i = 1
     for videogame in videogames:
         VideoGame(id=i, title=videogame[0], release_date=videogame[1], genres=videogame[2], platforms=videogame[3], editor=videogame[4], developer=videogame[5], picture=videogame[6], description=videogame[7], price=videogame[8]).save()
         i += 1
+
+    print('insert done')

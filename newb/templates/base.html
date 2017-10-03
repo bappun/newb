@@ -9,6 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static 'fontello/css/fontello.css' %}">
         <link rel="stylesheet" type="text/css" href="{% sass_src 'css/base.scss' %}">
         {% render_block 'css' %}
     </head>
@@ -16,20 +17,27 @@
         <div class="load-container"><div class="loader"></div></div>
         <header>
             <nav class="navbar fixed-top navbar-dark bg-faded navbar-expand-md">
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <a class="navbar-brand brand" href="/">Newb</a>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbar">
                     <ul class="navbar-nav mr-auto">
+                        {% if user.is_authenticated %}
+                            <li class="nav-item right-menu">
+                                <a class="nav-link my-account" href="{% url 'shop:products' %}"><i class="icon-user"></i><span>Mon compte</span></a>
+                                <a class="nav-link logout" href="{% url 'shop:products' %}"><i class="icon-off"></i></a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item right-menu">
+                                <a class="nav-link login" href="{% url 'shop:products' %}"><span>Connexion</span></a>
+                            </li>
+                        {% endif %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'shop:products' %}">Mon compte</a>
+                            <a class="nav-link" href="{% url 'shop:products' %}"><i class="icon-shopping-bag"></i><span>Boutique</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'shop:products' %}">Boutique</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'shop:products' %}">Contact</a>
+                            <a class="nav-link" href="{% url 'shop:products' %}"><i class="icon-mail"></i><span>Contact</span></a>
                         </li>
                     </ul>
                 </div>

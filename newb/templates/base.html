@@ -22,24 +22,26 @@
                 </button>
                 <a class="navbar-brand brand" href="/">Newb</a>
                 <div class="collapse navbar-collapse" id="navbar">
+                {% with request.resolver_match.url_name as url_name %}
                     <ul class="navbar-nav mr-auto">
                         {% if user.is_authenticated %}
-                            <li class="nav-item right-menu">
-                                <a class="nav-link my-account" href="{% url 'shop:products' %}"><i class="icon-user"></i><span>Mon compte</span></a>
-                                <a class="nav-link logout" href="{% url 'shop:products' %}"><i class="icon-off"></i></a>
+                            <li class="nav-item right-menu{% if url_name == 'account' %} active{% endif %}">
+                                <a class="nav-link my-account" href="{% url 'shop:account' %}"><i class="icon-user"></i><span>Mon compte</span></a>
+                                <a class="nav-link logout" href="{% url 'shop:logout' %}"><i class="icon-off"></i></a>
                             </li>
                         {% else %}
-                            <li class="nav-item right-menu">
-                                <a class="nav-link login" href="{% url 'shop:products' %}"><span>Connexion</span></a>
+                            <li class="nav-item right-menu{% if url_name == 'login' %} active{% endif %}">
+                                <a class="nav-link login" href="{% url 'shop:login' %}"><span>Connexion</span></a>
                             </li>
                         {% endif %}
-                        <li class="nav-item">
+                        <li class="nav-item{% if url_name == 'products' %} active{% endif %}">
                             <a class="nav-link" href="{% url 'shop:products' %}"><i class="icon-shopping-bag"></i><span>Boutique</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'shop:products' %}"><i class="icon-mail"></i><span>Contact</span></a>
+                        <li class="nav-item{% if url_name == 'contact' %} active{% endif %}">
+                            <a class="nav-link" href="{% url 'shop:contact' %}"><i class="icon-mail"></i><span>Contact</span></a>
                         </li>
                     </ul>
+                {% endwith %}
                 </div>
             </nav>
 {% comment %}            <nav class="navbar fixed-top navbar-dark bg-faded">

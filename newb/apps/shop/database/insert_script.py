@@ -2,13 +2,18 @@ import sys
 import os
 import django
 
-sys.path.append("/home/bachi/projects/newb/")
+# print(str(os.path.dirname(os.path.abspath(__file__)).split('newb')[0]) + 'newb')
+# print('/'.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))).split('/')[:5]))
+
+sys.path.append('/'.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))).split('/')[:5]))
 os.environ["DJANGO_SETTINGS_MODULE"] = "newb.settings"
 django.setup()
 
 if __name__ == '__main__':
     from newb.apps.shop.models import Platform, Genre, Editor, Developer, VideoGame
 
+    while(1):
+        pass
     platforms = [
         ['Windows', 'Microsoft', None],
         ['Xbox One', 'Microsoft', 2013],

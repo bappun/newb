@@ -63,8 +63,12 @@ class Customer(models.Model):
         return self.user
 
 
-# @receiver(post_save, sender=User)
-# def update_user_profile(sender, instance, created, **kwargs):
-#     if created:
-#         Customer.objects.create(user=instance)
-#     instance.profile.save()
+@receiver(post_save, sender=User)
+def create_user_customer(sender, instance, created, **kwargs):
+    if created:
+        Customer.objects.create(user=instance)
+
+
+@receiver(post_save, sender=User)
+def save_user_customer(sender, instance, **kwargs):
+    instance.customer.save()

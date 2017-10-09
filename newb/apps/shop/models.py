@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Genre(models.Model):
@@ -56,7 +57,7 @@ class Customer(models.Model):
     postal_code = models.CharField(max_length=5, verbose_name='Code postal')
     city = models.CharField(max_length=100, verbose_name='Ville')
     country = models.CharField(max_length=75, verbose_name='Pays')
-    phone = models.CharField(max_length=50, verbose_name='Numéro de téléphone')
+    phone = PhoneNumberField(verbose_name='Numéro de téléphone')
 
     def __str__(self):
         return self.user

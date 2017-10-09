@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from newb.apps.shop.forms import CustomerRegisterForm
+from newb.apps.shop.forms import CustomerRegisterForm, ContactForm
 from .models import VideoGame
 
 
@@ -74,6 +74,23 @@ def account(request):
 
 
 def contact(request):
-    context = {}
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+
+        if form.is_valid():
+            contact = form.save()
+
+            contact.name = form.cleaned_data.get('name')
+            contact.subject = form.cleaned_data.get('subject')
+            contact.message = form.cleaned_data.get('message')
+            contact.save()
+
+            if contact is not None:
+                return HttpResponseRedirect('/')
+
+    else:
+        form = ContactForm()
+
+    context = {'form': form}
     return render(request, 'shop/contact.html', context)
 

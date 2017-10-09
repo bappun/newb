@@ -3,5 +3,9 @@
 
 {% block title %}Contact{% endblock %}
 {% block page %}
-
+    <form action="{% url 'shop:contact' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input class="btn btn-info" type="submit" value="Valider" />
+    </form>
 {% endblock %}

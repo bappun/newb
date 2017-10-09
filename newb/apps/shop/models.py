@@ -72,3 +72,12 @@ def create_user_customer(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_customer(sender, instance, **kwargs):
     instance.customer.save()
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=50, verbose_name='Nom')
+    subject = models.CharField(max_length=150, verbose_name='Sujet')
+    message = models.TextField(verbose_name='Message')
+
+    def __str__(self):
+        return self.name

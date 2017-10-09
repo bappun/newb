@@ -1,4 +1,4 @@
-from django.core.validators import MaxValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -54,17 +54,17 @@ class VideoGame(models.Model):
 class Customer(models.Model):
     user = models.OneToOneField(User)
     address = models.CharField(max_length=150, verbose_name='Adresse')
-    postal_code = models.PositiveIntegerField(verbose_name='Code postal', validators=[MaxValueValidator(99999)])
+    postal_code = models.CharField(max_length=5, verbose_name='Code postal')
     city = models.CharField(max_length=100, verbose_name='Ville')
     country = models.CharField(max_length=75, verbose_name='Pays')
-    phone = models.PositiveIntegerField(verbose_name='Numéro de téléphone', validators=[MaxValueValidator(9999999999)])
+    phone = models.CharField(max_length=50, verbose_name='Numéro de téléphone')
 
     def __str__(self):
         return self.user
 
 
-# @receiver(post_save, sender=User)
-# def update_user_profile(sender, instance, created, **kwargs):
-#     if created:
-#         Customer.objects.create(user=instance)
-#     instance.profile.save()
+@receiver(post_save, sender=User)
+def update_user_customer(sender, instance, created, **kwargs):
+    if created:
+        Customer.objects.create(user=instance)
+    instance.customer.save()

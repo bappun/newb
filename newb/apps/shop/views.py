@@ -4,7 +4,7 @@ from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from newb.apps.shop.forms import CustomerRegisterForm, ContactForm
+from newb.apps.shop.forms import CustomerRegisterForm, ContactForm, UserRegisterForm
 from .models import VideoGame
 
 
@@ -42,20 +42,16 @@ def signout(request):
 @transaction.atomic
 def register(request):
     if request.method == 'POST':
-        form = CustomerRegisterForm(request.POST)
+        form_user = UserRegisterForm(request.POST)
+        form_customer = CustomerRegisterForm(request.POST)
 
-        if form.is_valid():
-            user = form.save()
-            user.refresh_from_db()
-
-            user.customer.address = form.cleaned_data.get('address')
-            user.customer.postal_code = form.cleaned_data.get('postal_code')
-            user.customer.city = form.cleaned_data.get('city')
-            user.customer.country = form.cleaned_data.get('country')
-            user.customer.phone = form.cleaned_data.get('phone')
+        if form_user.is_valid() and form_customer.is_valid():
+            user = form_user.save()
+            user.customer = form_customer.save()
             user.save()
+            user.customer.save()
 
-            raw_password = form.cleaned_data.get('password1')
+            raw_password = form_user.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
 
             if user is not None:
@@ -63,9 +59,10 @@ def register(request):
                 return HttpResponseRedirect('/')
 
     else:
-        form = CustomerRegisterForm()
+        form_user = UserRegisterForm()
+        form_customer = CustomerRegisterForm()
 
-    context = {'form': form}
+    context = {'form_user': form_user, 'form_customer': form_customer}
     return render(request, 'shop/register.html', context)
 
 
@@ -76,6 +73,7 @@ def account(request):
 
 
 def contact(request):
+    context = {}
     if request.method == 'POST':
         form = ContactForm(request.POST)
 
@@ -87,11 +85,12 @@ def contact(request):
             contact_instance.save()
 
             if contact_instance is not None:
-                return HttpResponseRedirect('/')
+                context['success'] = "Message envoyé !"
+                form = ContactForm()
 
     else:
         form = ContactForm()
 
-    context = {'form': form}
+    context['form'] = form
     return render(request, 'shop/contact.html', context)
 

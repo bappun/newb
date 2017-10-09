@@ -72,6 +72,7 @@ def update_user_customer(sender, instance, created, **kwargs):
 
 class Contact(models.Model):
     name = models.CharField(max_length=50, verbose_name='Nom')
+    email = models.EmailField(verbose_name='Email')
     subject = models.CharField(max_length=150, verbose_name='Sujet')
     message = models.TextField(verbose_name='Message')
 

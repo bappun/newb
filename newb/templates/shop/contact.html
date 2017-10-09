@@ -3,9 +3,13 @@
 
 {% block title %}Contact{% endblock %}
 {% block page %}
+
+    {% if success %}
+        <div class="alert alert-success" role="alert">{{ success }}</div>
+    {% endif %}
     <form action="{% url 'shop:contact' %}" method="post">
         {% csrf_token %}
-        {{ form }}
+        {% include 'form_default.html' %}
         <input class="btn btn-info" type="submit" value="Valider" />
     </form>
 {% endblock %}

@@ -17,7 +17,7 @@ class CustomerRegisterForm(UserCreationForm):
         fields = ('username', 'password1', 'password2', )
 
 
-class ContactForm(forms.Form):
+class ContactForm(forms.ModelForm):
 
     class Meta:
         model = Contact

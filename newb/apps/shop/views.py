@@ -80,14 +80,13 @@ def contact(request):
         form = ContactForm(request.POST)
 
         if form.is_valid():
-            contact = form.save()
+            contact_instance = form.save()
+            contact_instance.name = form.cleaned_data.get('name')
+            contact_instance.subject = form.cleaned_data.get('subject')
+            contact_instance.message = form.cleaned_data.get('message')
+            contact_instance.save()
 
-            contact.name = form.cleaned_data.get('name')
-            contact.subject = form.cleaned_data.get('subject')
-            contact.message = form.cleaned_data.get('message')
-            contact.save()
-
-            if contact is not None:
+            if contact_instance is not None:
                 return HttpResponseRedirect('/')
 
     else:

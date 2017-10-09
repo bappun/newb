@@ -76,7 +76,4 @@ class Contact(models.Model):
     message = models.TextField(verbose_name='Message')
 
     def __str__(self):
-        return self.name
-
-
-
+        return self.name + ' > [' + self.subject + "] " + self.message

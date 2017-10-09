@@ -30,6 +30,7 @@
             </table>
 
             <input class="btn btn-info" type="submit" value="Connexion"/>
+            <input class="btn btn-secondary" type="button" value="Inscription" onclick="window.location.href='{% url 'shop:register' %}'"/>
             <input type="hidden" name="next" value="{{ next }}"/>
         </form>
 

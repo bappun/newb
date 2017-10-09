@@ -1,8 +1,8 @@
-from django.core.validators import MaxValueValidator
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Genre(models.Model):
@@ -54,23 +54,19 @@ class VideoGame(models.Model):
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     address = models.CharField(max_length=150, verbose_name='Adresse')
-    postal_code = models.PositiveIntegerField(verbose_name='Code postal', validators=[MaxValueValidator(99999)])
+    postal_code = models.CharField(max_length=5, verbose_name='Code postal')
     city = models.CharField(max_length=100, verbose_name='Ville')
     country = models.CharField(max_length=75, verbose_name='Pays')
-    phone = models.PositiveIntegerField(verbose_name='Numéro de téléphone', validators=[MaxValueValidator(9999999999)])
+    phone = PhoneNumberField(verbose_name='Numéro de téléphone')
 
     def __str__(self):
         return self.user
 
 
 @receiver(post_save, sender=User)
-def create_user_customer(sender, instance, created, **kwargs):
+def update_user_customer(sender, instance, created, **kwargs):
     if created:
         Customer.objects.create(user=instance)
-
-
-@receiver(post_save, sender=User)
-def save_user_customer(sender, instance, **kwargs):
     instance.customer.save()
 
 
@@ -81,3 +77,6 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name
+
+
+

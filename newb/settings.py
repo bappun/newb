@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sass_processor',
     'sekizai',
+    'phonenumber_field',
     'newb.apps.shop'
 ]
 

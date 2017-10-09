@@ -1,6 +1,6 @@
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
+from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -33,11 +33,13 @@ def authentication(request):
         return HttpResponseRedirect('/login/')
 
 
+@login_required(login_url='/login/')
 def signout(request):
     logout(request)
     return HttpResponseRedirect('/')
 
 
+@transaction.atomic
 def register(request):
     if request.method == 'POST':
         form = CustomerRegisterForm(request.POST)

@@ -30,7 +30,8 @@ if __name__ == '__main__':
         ['Stratégie'],
         ['Sport'],
         ['Course'],
-        ['MMO']
+        ['MMO'],
+        ['Infiltration']
     ]
 
     for genre in genres:
@@ -46,7 +47,10 @@ if __name__ == '__main__':
         ['Nintendo'],
         ['Turn 10'],
         ['Bluehole, Inc.'],
-        ['Microsoft']
+        ['Microsoft'],
+        ['Warner Bros Games'],
+        ['Monolith Productions'],
+        ['Larian Studios']
     ]
 
     for developer in developers:
@@ -58,7 +62,10 @@ if __name__ == '__main__':
         ['Destiny 2', '2017-09-06', [Genre.objects.get(name='Tir')], [Platform.objects.get(name='Windows'), Platform.objects.get(name='Xbox One'), Platform.objects.get(name='PS4')], Editor.objects.get(name='Activision'), Developer.objects.get(name='Bungie'), '/media/uploaded/img/shop/destiny_2.jpg', 'Suite du premier opus du même nom réalisé par les créateurs de Halo, Destiny 2 est un FPS futuriste et intergalactique. Les joueurs peuvent y importer les personnages qu\'ils ont créés et améliorés dans le premier opus.', 44.99],
         ['Super Mario Odyssey', '2017-10-27', [Genre.objects.get(name='Plate-forme')], [Platform.objects.get(name='Switch')], Editor.objects.get(name='Nintendo'), Developer.objects.get(name='Nintendo'), '/media/uploaded/img/shop/super_mario_odyssey.jpg', 'La princesse Peach a été enlevée par Bowser. Pour la sauver, Mario quitte le royaume Champignon à bord de l\'Odyssey. Accompagné de Clappy, son chapeau vivant, il parcourra différents royaumes et fera tout pour vaincre, une nouvelle fois, terrible Bowser.', 44.90],
         ['Forza Motorsport 7', '2017-10-03', [Genre.objects.get(name='Course'), Genre.objects.get(name='Simulation')], [Platform.objects.get(name='Xbox One'), Platform.objects.get(name='Windows')], Editor.objects.get(name='Microsoft'), Developer.objects.get(name='Turn 10'), '/media/uploaded/img/shop/forza_motorsport_7.jpg', 'Forza Motorsport 7 est un jeu de course automobile développé par Turn 10. Septième opus de la série, il bénéficie d\'un mode carrière revu en profondeur et de nouveautés comme le système de météo dynamique.', 54.99],
-        ['PlayerUnknown\'s Battlegrounds', '2017-03-23', [Genre.objects.get(name='MMO'), Genre.objects.get(name='Action'), Genre.objects.get(name='Aventure'), Genre.objects.get(name='Tir')], [Platform.objects.get(name='Windows')], Editor.objects.get(name='Bluehole, Inc.'), Developer.objects.get(name='Bluehole, Inc.'), '/media/uploaded/img/shop/playerunknowns_battlegrounds.png', 'PlayerUnknown\'s Battlegrounds est un jeu multijoueur de type Battle Royale. En partant de rien, il vous faut trouver des armes et des ressources afin d\'être le dernier survivant. Développé avec Unreal Engine 4, vous vous retrouvez sur une île de 8x8 km, avec pour but ultime de ne pas vous faire tuer.', 23.99]
+        ['PlayerUnknown\'s Battlegrounds', '2017-03-23', [Genre.objects.get(name='MMO'), Genre.objects.get(name='Action'), Genre.objects.get(name='Aventure'), Genre.objects.get(name='Tir')], [Platform.objects.get(name='Windows')], Editor.objects.get(name='Bluehole, Inc.'), Developer.objects.get(name='Bluehole, Inc.'), '/media/uploaded/img/shop/playerunknowns_battlegrounds.png', 'PlayerUnknown\'s Battlegrounds est un jeu multijoueur de type Battle Royale. En partant de rien, il vous faut trouver des armes et des ressources afin d\'être le dernier survivant. Développé avec Unreal Engine 4, vous vous retrouvez sur une île de 8x8 km, avec pour but ultime de ne pas vous faire tuer.', 23.99],
+        ['La Terre du Milieu : L\'Ombre de la Guerre', '2017-09-28', [Genre.objects.get(name='Action'), Genre.objects.get(name='Infiltration'), Genre.objects.get(name='Aventure')], [Platform.objects.get(name='Windows'), Platform.objects.get(name='Xbox One'), Platform.objects.get(name='PS4')], Editor.objects.get(name='Warner Bros Games'), Developer.objects.get(name='Monolith Productions'), '/media/uploaded/img/shop/terre_milieu_ombre_guerre.jpg', 'La Terre du Milieu : L\'Ombre de la Guerre est un jeu d\'action/aventure. Il est la suite directe de La Terre du Milieu : L\'Ombre du Mordor. Infiltrez vous derrière les lignes ennemis, partez à la conquête de forteresses et dominez le Mordor de l\'intérieur.', 44.99],
+        ['Divinity : Original Sin II', '2017-09-14', [Genre.objects.get(name='RPG')], [Platform.objects.get(name='Windows')], Editor.objects.get(name='Larian Studios'), Developer.objects.get(name='Larian Studios'), '/media/uploaded/img/shop/divinity_original_sin_2.jpg', 'Choisissez votre race et et votre background et regardez comment le monde réagit. Rassemblez votre équipe et affrontez vos adversaires avec différents éléments de combat tactique au tour par tour. Explorez un vaste monde seul ou avec 4 joueurs en coopératif.', 44.99],
+        ['Mario + The Lapins Crétins Kingdom Battle', '2017-08-29', [Genre.objects.get(name='RPG')], [Platform.objects.get(name='Switch')], Editor.objects.get(name='Ubisoft'), Developer.objects.get(name='Nintendo'), '/media/uploaded/img/shop/mario_lapins_cretins.jpg', 'Mario + Rabbids Kingdom Battle (Mario X Rabbids) est un RPG sur Nintendo Switch qui utilisera le moteur de jeu d’Ubisoft, Snowdrop Engine. Il proposera un système tour par tour, un mode co-op local, le tout sur un fond d\'humour pour lequel les deux franchises sont connues. Les joueurs pourront choisir entre 8 personnages jouables : Mario, Luigi, Yoshi, Peach, ainsi que leurs versions Lapin Crétin.', 45.00]
     ]
 
     i = 1

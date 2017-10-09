@@ -13,7 +13,7 @@ def index(request):
     return render(request, 'shop/index.html', context)
 
 
-def products(request):
+def shop(request):
     context = {
         'products': VideoGame.objects.all()
     }

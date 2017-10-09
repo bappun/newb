@@ -5,7 +5,7 @@ from newb.apps.shop import views
 
 urlpatterns = [
     url(r'^$', views.index, name="index"),
-    url(r'^products/$', views.products, name="products"),
+    url(r'^shop/$', views.shop, name="shop"),
     url(r'^login/$',  auth_views.LoginView.as_view(template_name='shop/login.html'), name="login"),
     url(r'^authentication/$', views.authentication, name="authentication"),
     url(r'^signout/$', views.signout, name="signout"),

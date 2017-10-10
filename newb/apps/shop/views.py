@@ -42,16 +42,23 @@ def signout(request):
 @transaction.atomic
 def register(request):
     if request.method == 'POST':
-        form_user = UserRegisterForm(request.POST)
-        form_customer = CustomerRegisterForm(request.POST)
+        user_form = UserRegisterForm(request.POST, prefix="user_form")
+        customer_form = CustomerRegisterForm(request.POST, prefix="customer_form")
 
-        if form_user.is_valid() and form_customer.is_valid():
-            user = form_user.save()
-            user.customer = form_customer.save()
+        if user_form.is_valid() and customer_form.is_valid():
+            user = user_form.save()
+            user.refresh_from_db()
+
+            user.customer.user_id = user.id
+            user.customer.address = customer_form.cleaned_data.get('address')
+            user.customer.postal_code = customer_form.cleaned_data.get('postal_code')
+            user.customer.city = customer_form.cleaned_data.get('city')
+            user.customer.country = customer_form.cleaned_data.get('country')
+            user.customer.phone = customer_form.cleaned_data.get('phone')
+
             user.save()
-            user.customer.save()
 
-            raw_password = form_user.cleaned_data.get('password1')
+            raw_password = user_form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
 
             if user is not None:
@@ -59,10 +66,12 @@ def register(request):
                 return HttpResponseRedirect('/')
 
     else:
-        form_user = UserRegisterForm()
-        form_customer = CustomerRegisterForm()
+        user_form = UserRegisterForm()
+        user_form.prefix = "user_form"
+        customer_form = CustomerRegisterForm()
+        customer_form.prefix = "customer_form"
 
-    context = {'form_user': form_user, 'form_customer': form_customer}
+    context = {'user_form': user_form, 'customer_form': customer_form}
     return render(request, 'shop/register.html', context)
 
 

@@ -82,6 +82,23 @@ button,
   cursor: pointer;
 }
 
+.alert.alert-danger {
+  margin-top: 0.5rem;
+
+  & > ul {
+    margin-bottom: 0;
+    padding-left: inherit;
+  }
+}
+
+.hr {
+  border-top: 1px solid $grey-normal;
+
+  &.margin {
+    margin: 40px 0;
+  }
+}
+
 .brand {
   font-family: 'PatrickHandSC', sans-serif;
 }

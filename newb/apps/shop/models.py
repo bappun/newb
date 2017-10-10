@@ -53,7 +53,7 @@ class VideoGame(models.Model):
 # we add some informations at the user model which already exist on django
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    address = models.CharField(max_length=150, verbose_name='Adresse électronique')
+    address = models.CharField(max_length=150, verbose_name='Adresse')
     postal_code = models.CharField(max_length=5, verbose_name='Code postal')
     city = models.CharField(max_length=100, verbose_name='Ville')
     country = models.CharField(max_length=75, verbose_name='Pays')

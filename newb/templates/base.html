@@ -31,7 +31,7 @@
                             </li>
                         {% else %}
                             <li class="nav-item right-menu{% if url_name == 'login' %} active{% endif %}">
-                                <a class="nav-link login" href="{% url 'shop:login' %}"><span>Connexion</span></a>
+                                <a class="nav-link login" href="{% url 'shop:login' %}"><i class="icon-user"></i><span>Connexion</span></a>
                             </li>
                         {% endif %}
                         <li class="nav-item{% if url_name == 'products' %} active{% endif %}">

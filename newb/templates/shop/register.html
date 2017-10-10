@@ -5,8 +5,11 @@
 {% block page %}
     <form action="{% url 'shop:register' %}" method="post">
         {% csrf_token %}
-        {% include 'form_default.html' with form=form_user %}
-        {% include 'form_default.html' with form=form_customer %}
-        <input class="btn btn-info" type="submit" value="Valider" />
+        {% include 'form_default.html' with form=user_form %}
+        <div class="hr margin"></div>
+        {% include 'form_default.html' with form=customer_form %}
+        <div class="row justify-content-end">
+             <div class="col-md-10 text-center"><input class="btn btn-info" type="submit" value="Valider" /></div>
+         </div>
     </form>
 {% endblock %}

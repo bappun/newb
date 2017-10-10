@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
 from newb.apps.shop.models import Contact, Customer
@@ -42,6 +42,16 @@ class ContactForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)
+        for field in iter(self.fields):
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control'
+            })
+
+
+class AuthForm(AuthenticationForm):
+
+    def __init__(self, *args, **kwargs):
+        super(AuthForm, self).__init__(*args, **kwargs)
         for field in iter(self.fields):
             self.fields[field].widget.attrs.update({
                 'class': 'form-control'

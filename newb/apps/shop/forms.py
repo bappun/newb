@@ -9,10 +9,12 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2',)
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2',)
 
     def __init__(self, *args, **kwargs):
         super(UserRegisterForm, self).__init__(*args, **kwargs)
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
         self.fields['email'].required = True
         for field in iter(self.fields):
             self.fields[field].widget.attrs.update({
@@ -28,6 +30,7 @@ class CustomerRegisterForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(CustomerRegisterForm, self).__init__(*args, **kwargs)
+        self.fields['phone'].widget.attrs.update({'placeholder': '+33'})
         for field in iter(self.fields):
             self.fields[field].widget.attrs.update({
                 'class': 'form-control'

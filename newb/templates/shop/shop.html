@@ -3,14 +3,12 @@
 
 {% block title %}Produits{% endblock %}
 {% block page %}
-    {% addtoblock 'css' %}
-        <link rel="stylesheet" type="text/css" href="{% sass_src 'css/shop/products.scss' %}">
-    {% endaddtoblock %}
+    {% addtoblock 'css' %}<link rel="stylesheet" type="text/css" href="{% sass_src 'css/shop/products.scss' %}">{% endaddtoblock %}
 
     <ul class="products-list row">
         {% for product in products %}
             <li class="list-item col-xl-3 col-md-4 col-sm-6 col-12">
-                <button type="button" class="not-really-a-button product" data-toggle="modal" data-target="#modal-{{ product.id }}">
+                <button type="button" class="not-really-a-button product card-container" data-toggle="modal" data-target="#modal-{{ product.id }}">
                     <div class="product-picture">{% if product.picture %}<img height="200px" src="{{ product.picture }}" />{% else %}<span class="picture-placeholder">?</span>{% endif %}</div>
                     <div class="product-title"><span>{{ product.title }}</span></div>
                     <div class="product-price"><span>{{ product.price }} €</span></div>
@@ -57,7 +55,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-info">Acheter - {{ product.price }} €</button>
+                                <button type="button" class="btn btn-info" onclick="window.location.href='{% if user.is_authenticated %}{% url 'shop:shop_checkout' product.id %}{% else %}{% url 'shop:login' %}{% endif %}'">Acheter - {{ product.price }} €</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                             </div>
                         </div>

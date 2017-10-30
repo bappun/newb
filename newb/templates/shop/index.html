@@ -3,9 +3,7 @@
 
 {% block title %}Accueil{% endblock %}
 {% block page %}
-    {% addtoblock 'css' %}
-        <link rel="stylesheet" type="text/css" href="{% sass_src 'css/shop/index.scss' %}">
-    {% endaddtoblock %}
+    {% addtoblock 'css' %}<link rel="stylesheet" type="text/css" href="{% sass_src 'css/shop/index.scss' %}">{% endaddtoblock %}
 
     <div class="home-text">
         <div>Les&nbsp;meilleurs&nbsp;jeux, au&nbsp;meilleur&nbsp;prix, c'est&nbsp;ici.</div>

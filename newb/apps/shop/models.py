@@ -57,7 +57,7 @@ class Customer(models.Model):
     postal_code = models.CharField(max_length=5, verbose_name='Code postal')
     city = models.CharField(max_length=100, verbose_name='Ville')
     country = models.CharField(max_length=75, verbose_name='Pays')
-    phone = PhoneNumberField(verbose_name='Numéro de téléphone')
+    phone = PhoneNumberField(verbose_name='Numéro de téléphone', help_text='Avec l\'indicatif du pays.')
 
     def __str__(self):
         return self.user
@@ -78,3 +78,8 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name + ' > [' + self.subject + "] " + self.message
+
+
+class Order(models.Model):
+    customer = models.ForeignKey("Customer")
+    item = models.ForeignKey("VideoGame")

@@ -2,10 +2,10 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from newb.apps.shop.forms import CustomerRegisterForm, ContactForm, UserRegisterForm
-from .models import VideoGame
+from .models import VideoGame, Order
 
 
 def index(request):
@@ -17,7 +17,26 @@ def shop(request):
     context = {
         'products': VideoGame.objects.all()
     }
-    return render(request, 'shop/products.html', context)
+    return render(request, 'shop/shop.html', context)
+
+
+@login_required(login_url='/login/')
+def shop_checkout(request, id):
+    context = {
+        'product': VideoGame.objects.get(id=id)
+    }
+    return render(request, 'shop/shop_checkout.html', context)
+
+
+@login_required(login_url='/login/')
+def shop_checkout_done(request):
+    if request.method == 'POST':
+        product = VideoGame.objects.get(id=request.POST.get("product-id"))
+        order = Order(customer=request.user.customer, item=product)
+        order.save()
+        return redirect('shop:account')
+
+    return redirect('shop:index')
 
 
 def authentication(request):
@@ -77,7 +96,9 @@ def register(request):
 
 @login_required(login_url='/login/')
 def account(request):
-    context = {}
+    context = {
+        'orders': Order.objects.filter(customer=request.user.customer),
+    }
     return render(request, 'shop/account.html', context)
 
 

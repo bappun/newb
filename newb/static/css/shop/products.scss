@@ -9,10 +9,7 @@
     padding: 15px;
 
     .product {
-      padding: 20px;
-      background-color: $product-bg-color;
       transition: transform ease-in-out 200ms;
-      box-shadow: 1px 1px 8px 1px $product-shadow-color;
 
       .product-picture {
         margin-bottom: 20px;

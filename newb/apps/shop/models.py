@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Genre(models.Model):
@@ -51,12 +52,12 @@ class VideoGame(models.Model):
 
 # we add some informations at the user model which already exist on django
 class Customer(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     address = models.CharField(max_length=150, verbose_name='Adresse')
     postal_code = models.CharField(max_length=5, verbose_name='Code postal')
     city = models.CharField(max_length=100, verbose_name='Ville')
     country = models.CharField(max_length=75, verbose_name='Pays')
-    phone = models.CharField(max_length=50, verbose_name='Numéro de téléphone')
+    phone = PhoneNumberField(verbose_name='Numéro de téléphone', help_text='Avec l\'indicatif du pays.')
 
     def __str__(self):
         return self.user
@@ -67,3 +68,18 @@ def update_user_customer(sender, instance, created, **kwargs):
     if created:
         Customer.objects.create(user=instance)
     instance.customer.save()
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=50, verbose_name='Nom')
+    email = models.EmailField(verbose_name='Adresse email')
+    subject = models.CharField(max_length=150, verbose_name='Sujet')
+    message = models.TextField(verbose_name='Message')
+
+    def __str__(self):
+        return self.name + ' > [' + self.subject + "] " + self.message
+
+
+class Order(models.Model):
+    customer = models.ForeignKey("Customer")
+    item = models.ForeignKey("VideoGame")

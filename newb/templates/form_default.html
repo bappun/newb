@@ -1,0 +1,24 @@
+{% for field in form %}
+    <div class="form-group row">
+        <label for="{{ field.id_for_label }}" class="col-md-12 col-form-label">{{ field.label }}</label>
+        <div class="col-md-12">
+            {{ field }}
+            <small id="help-text" class="form-text text-muted">{{ field.help_text|safe }}</small>
+            {% if field.errors %}
+                <div class="alert alert-danger">
+                    {% if field.errors|length > 1 %}
+                        <ul>
+                            {% for error in field.errors %}
+                                <li><strong>{{ error|escape }}</strong></li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        {% for error in field.errors %}
+                            <strong>{{ error|escape }}</strong>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}

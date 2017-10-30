@@ -18,22 +18,19 @@
 
         <form method="post" action="{% url 'shop:authentication' %}">
             {% csrf_token %}
-            <table>
-                <tr>
-                    <td>{{ form.username.label_tag }}</td>
-                    <td>{{ form.username }}</td>
-                </tr>
-                <tr>
-                    <td>{{ form.password.label_tag }}</td>
-                    <td>{{ form.password }}</td>
-                </tr>
-            </table>
+            {% include 'form_default.html' %}
 
-            <input class="btn btn-info" type="submit" value="Connexion"/>
-            <input class="btn btn-secondary" type="button" value="Inscription" onclick="window.location.href='{% url 'shop:register' %}'"/>
+            <div class="row justify-content-end">
+                <div class="col-md-12 text-center">
+                    <input class="btn btn-info" type="submit" value="Valider"/>&nbsp;
+                    <input class="btn btn-secondary" type="button" value="Inscription" onclick="window.location.href='{% url 'shop:register' %}'"/>
+                </div>
+                <div class="col-md-12 text-center">
+                    <a href="{% url 'password_reset' %}">Mot de passe oublié ?</a>
+                </div>
+            </div>
+
             <input type="hidden" name="next" value="{{ next }}"/>
         </form>
-
-        <p><a href="{% url 'password_reset' %}">Mot de passe oublié ?</a></p>
     </div>
 {% endblock %}

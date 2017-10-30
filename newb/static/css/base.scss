@@ -82,6 +82,23 @@ button,
   cursor: pointer;
 }
 
+.alert.alert-danger {
+  margin-top: 0.5rem;
+
+  & > ul {
+    margin-bottom: 0;
+    padding-left: inherit;
+  }
+}
+
+.hr {
+  border-top: 1px solid $grey-normal;
+
+  &.margin {
+    margin: 40px 0;
+  }
+}
+
 .brand {
   font-family: 'PatrickHandSC', sans-serif;
 }
@@ -252,4 +269,21 @@ footer {
       margin-bottom: 0.3em;
     }
   }
+}
+
+// FORMS
+
+.login-container > form {
+  margin: auto;
+  max-width: 500px;
+}
+
+.card-container {
+  padding: 20px;
+  background-color: $product-bg-color;
+  box-shadow: 1px 1px 8px 1px $product-shadow-color;
+}
+
+.margin-top {
+  margin-top: 15px;
 }

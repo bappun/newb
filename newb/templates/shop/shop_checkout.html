@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load sekizai_tags static sass_tags %}
+
+{% block title %}Confirmation de l'achat{% endblock %}
+{% block page %}
+    <form class="card-container" action="{% url 'shop:shop_checkout_done' %}" method="post">
+        {% csrf_token %}
+
+        <div class="row text-center">
+            <div class="col-12">Voulez-vous vraiment acheter {{ product.title }} ?</div>
+        </div><br/>
+        <div class="col-md-12 text-center">
+            <input type="hidden" name="product-id" value="{{ product.id }}">
+            <input class="btn btn-info" type="submit" value="Valider - {{ product.price }} €"/>&nbsp;
+            <input class="btn btn-secondary" type="button" value="Annuler" onclick="window.location.href='{% url 'shop:index' %}'"/>
+        </div>
+    </form>
+{% endblock %}

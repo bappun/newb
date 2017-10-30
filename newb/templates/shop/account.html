@@ -3,5 +3,46 @@
 
 {% block title %}Mon compte{% endblock %}
 {% block page %}
+    <div class="card-container">
+        <div class="row">
+            <div class="col-md-12"><h1>{{ request.user.first_name }} {{ request.user.last_name }}</h1></div>
+        </div><br/>
+        <div class="row">
+            <div class="col-md-2"><b>Email</b></div>
+            <div class="col-md-10">{{ request.user.email }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"><b>Téléphone</b></div>
+            <div class="col-md-10">{{ request.user.customer.phone }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"><b>Adresse</b></div>
+            <div class="col-md-10">{{ request.user.customer.address }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"><b>Code postal</b></div>
+            <div class="col-md-10">{{ request.user.customer.postal_code }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"><b>Ville</b></div>
+            <div class="col-md-10">{{ request.user.customer.city }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"><b>Pays</b></div>
+            <div class="col-md-10">{{ request.user.customer.country }}</div>
+        </div>
+    </div>
 
+    <div class="card-container margin-top">
+        <h1>Achats</h1><br/>
+        {% if orders %}
+            {% for order in orders %}
+                <div class="row">
+                    <div class="col-12">{{ order.item.title }} - {{ order.item.price }} €</div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <span>Aucun achat effectué.</span>
+        {% endif %}
+    </div>
 {% endblock %}

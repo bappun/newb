@@ -11,7 +11,7 @@ Date de rendu : 8 décembre à 23h59 sinon le 22 décembre
 
 ## Thème du site
 
-Newb est un site qui vend des jeux vidéo.
+Newb est un site qui vend des jeux vidéo
 
 ## Requirements
 
@@ -22,9 +22,9 @@ Database : SQLite
 ## TODO List
 
 - [x] master-detail interface : a clickable list of items that navigates to the item's details
-- [ ] n-tiers architecture (presentation + logic + data)
+- [x] n-tiers architecture (presentation + logic + data)
 - [x] a backend MVC pattern (no single page app)
-- [ ] CRUD operations (Create, Read, Update, Delete)
+- [x] CRUD operations (Create, Read, Update, Delete)
 - [x] database with at least two tables and a many-to-one relationship
 - [x] ORM to access the database
 - [x] create UI/UX with CSS
@@ -33,9 +33,10 @@ Database : SQLite
 
 ## Bonus
 
-- [ ] sorting
+- [x] done before 8th december
+- [x] sorting
 - [x] paging
-- [ ] search / advanced search
+- [x] search / advanced search
 - [ ] web API
 - [ ] javascript that consumes the web api
 - [ ] only one controller for all models
